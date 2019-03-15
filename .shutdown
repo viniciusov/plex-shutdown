@@ -22,7 +22,7 @@ do
 done
 
 shut_time=$(date --date='10 minutes' +"%T")
-notify-send -t 600000 -i '/usr/share/icons/Papirus/16x16/apps/plex.svg' "WARNING:
+notify-send -t 600000 -i 'icon/plex.svg' "WARNING:
 Plex is not running.
 Shutting down in 10 minutes (scheduled for $shut_time).
 Open the terminal and type shutdown -c to cancel."
