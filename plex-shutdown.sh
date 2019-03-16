@@ -14,7 +14,7 @@ waiting () {
     run_test
 }
 
-#waiting
+waiting
 
 while run_test 
 do
@@ -22,7 +22,7 @@ do
 done
 
 shut_time=$(date --date='10 minutes' +"%T")
-notify-send -t 600000 "WARNING:
+notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "WARNING:
 Plex is not running.
 Shutting down in 10 minutes (scheduled for $shut_time).
 Open the terminal and type shutdown -c to cancel."
