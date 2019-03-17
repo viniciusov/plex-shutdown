@@ -1,24 +1,10 @@
 #!/bin/bash
 
-run_test () {
-    processes=$(ps -aux | grep -c plex)
-    if [ "$processes" -gt 6 ]; then
-        return 0 #if plex is running
-    else
-        return 1 #if plex is not running
-    fi
-}
-
-waiting () {
-    sleep 60m
-    run_test
-}
-
 while : ; do
-	waiting
+	sleep 60m
 	
-	while run_test ; do #if plex is running
-	    waiting
+	while [ $(ps -aux | grep -c plex) -gt 6 ] ; do #if plex is running
+		sleep 60m
 	done
 	
 	shut_time=$(date --date='10 minutes' +"%T")
@@ -29,10 +15,9 @@ while : ; do
 	
 	sudo /sbin/shutdown -h +10
 
-	while ! run_test ; do #if plex is not running
+	while [ $(ps -aux | grep -c plex) -lt 6 ] ; do #if plex is not running
 		sleep 1m
-		run_test
-		if run_test ; then #if plex is running
+		if [ $(ps -aux | grep -c plex) -gt 6 ] ; then #if plex is running
 			sudo /sbin/shutdown -c
 			notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "Shutdown Cancelled."
 			break
