@@ -1,17 +1,24 @@
 #!/bin/bash
 
 while : ; do
-	sleep 60m
-	
-	while [ $(ps -aux | grep -c 'Plex Transcoder') -gt 1 ] ; do #if plex is running
-		sleep 60m
+	counter = 0
+	while [ $(ps -aux | grep -c 'Plex Transcoder') -le 1 ] ; do #if plex is not running
+		sleep 1m
+		((counter++))
+		if [ $counter -lt 50 ] ; then
+			if [ $(ps -aux | grep -c 'Plex Transcoder') -gt 1 ] ; then #if plex is running
+				counter = 0
+			fi
+		else
+			break
+		fi
 	done
 	
 	shut_time=$(date --date='10 minutes' +"%T")
 	notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "WARNING:
-	Plex is not running.
-	Shutting down in 10 minutes (scheduled for $shut_time).
-	Open the terminal and type shutdown -c to cancel."
+Plex is not transcoding.
+Shutting down in 10 minutes (scheduled for $shut_time).
+Open the terminal and type shutdown -c to cancel."
 	
 	sudo /sbin/shutdown -h +10
 
@@ -19,7 +26,8 @@ while : ; do
 		sleep 1m
 		if [ $(ps -aux | grep -c 'Plex Transcoder') -gt 1 ] ; then #if plex is running
 			sudo /sbin/shutdown -c
-			notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "Shutdown Cancelled."
+			notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "Plex is transcoding.
+Shutdown cancelled"
 			break
 		fi
 	done 
