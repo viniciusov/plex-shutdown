@@ -24,10 +24,9 @@ Open the terminal and type shutdown -c to cancel."
 
 	while [ $(ps -aux | grep -c 'Plex Transcoder') -le 1 ] ; do #if plex is not running
 		sleep 1m
-		if [ $(ps -aux | grep -c 'Plex Transcoder') -gt 1 ] ; then #if plex is running
+		if [ $(ps -aux | grep -c 'Plex Transcoder') -gt 1 ] || ! [ -f /run/systemd/shutdown/scheduled ] ; then #if plex is running or shutdown cancelled
 			sudo /sbin/shutdown -c
-			notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "Plex is transcoding.
-Shutdown cancelled"
+			notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "Shutdown cancelled"
 			break
 		fi
 	done 
