@@ -17,8 +17,8 @@ while : ; do
 	shut_time=$(date --date='10 minutes' +"%T")
 	notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "WARNING:
 Plex is not transcoding.
-Shutting down in 10 minutes (scheduled for $shut_time).
-Open the terminal and type shutdown -c to cancel."
+Shutting down in 10 minutes ($shut_time).
+Type shutdown -c in a terminal to cancel."
 	
 	sudo /sbin/shutdown -h +10
 
@@ -31,4 +31,3 @@ Open the terminal and type shutdown -c to cancel."
 		fi
 	done 
 done
-
