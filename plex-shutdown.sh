@@ -15,7 +15,7 @@ while : ; do
 	
 	sudo /sbin/shutdown -h +10
 
-	while [ $(ps -aux | grep -c plex) -lt 6 ] ; do #if plex is not running
+	while [ $(ps -aux | grep -c plex) -le 6 ] ; do #if plex is not running
 		sleep 1m
 		if [ $(ps -aux | grep -c plex) -gt 6 ] ; then #if plex is running
 			sudo /sbin/shutdown -c
