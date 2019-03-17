@@ -3,7 +3,7 @@
 while : ; do
 	sleep 60m
 	
-	while [ $(ps -aux | grep -c plex) -gt 6 ] ; do #if plex is running
+	while [ $(ps -aux | grep -c 'Plex Transcoder') -gt 1 ] ; do #if plex is running
 		sleep 60m
 	done
 	
@@ -15,9 +15,9 @@ while : ; do
 	
 	sudo /sbin/shutdown -h +10
 
-	while [ $(ps -aux | grep -c plex) -le 6 ] ; do #if plex is not running
+	while [ $(ps -aux | grep -c 'Plex Transcoder') -le 1 ] ; do #if plex is not running
 		sleep 1m
-		if [ $(ps -aux | grep -c plex) -gt 6 ] ; then #if plex is running
+		if [ $(ps -aux | grep -c 'Plex Transcoder') -gt 1 ] ; then #if plex is running
 			sudo /sbin/shutdown -c
 			notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "Shutdown Cancelled."
 			break
