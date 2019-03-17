@@ -1,13 +1,13 @@
 #!/bin/bash
 
 while : ; do
-	counter = 0
+	counter=0
 	while [ $(ps -aux | grep -c 'Plex Transcoder') -le 1 ] ; do #if plex is not running
 		sleep 1m
 		((counter++))
 		if [ $counter -lt 50 ] ; then
 			if [ $(ps -aux | grep -c 'Plex Transcoder') -gt 1 ] ; then #if plex is running
-				counter = 0
+				counter=0
 			fi
 		else
 			break
