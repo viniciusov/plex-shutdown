@@ -7,7 +7,7 @@ If Plex isn't transcoding within 50 minutes, it will send a pop-up notification 
 
 ![Notification preview](https://raw.githubusercontent.com/viniciusov/plex-shutdown/master/sample_images/1.png)
 
-After the warning, if plex starts transcoding or if you cancel the shutdown by typing `shutdown -c` in a terminal, you will see a new pop-up about the cancelation.  
+After the warning, if plex starts transcoding or if you cancel the shutdown by typing `shutdown -c` in a terminal, you will see a new pop-up about the cancelation (see https://github.com/viniciusov/plex-shutdown/tree/master/sample_images for more images).  
 
 ## Requirements
 - Linux OS
