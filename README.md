@@ -15,13 +15,15 @@ After the warning, if plex starts transcoding or if you cancel the shutdown by t
 
 ## Installation
 - Open a terminal;
-- Go the plex-shutdown folder;
-- And type `./install.sh` (you **must** run this as a non-root user, **without sudo**)
+- Clone this git repository: `git clone https://github.com/viniciusov/plex-shutdown`(or simply download as .ZIP file and extract it);
+- Go the plex-shutdown folder: `cd plex-shutdown`;
+- Type `./install.sh` to run the installer (you **must** run this as a non-root user, **without sudo**);
+- Reboot or LogOUT/LogIN to the main script starts running.
 
 ## License
-This project is under GPLv3 (see https://www.gnu.org/licenses/gpl-3.0.de.html for more details).  
+This project is under the GPLv3 License (see https://www.gnu.org/licenses/gpl-3.0.de.html for more details).  
 I have no relation with the original Plex application, and this is intend to be just a free and independent add-on.  
-The Plex icon (used in the notification pop-ups) is from the Antü Plasma Suite, by Fabián Alex, released under the Creative Commons Attribution-Share Alike 3.0 Unported license (see https://github.com/fabianalexisinostroza/Antu-icons/blob/master/LICENSE.md for more details).
+The Plex icon (used in the notification pop-ups) is from the Antü Classic, by Fabián Alex, released under LGPL 2.1 License (see https://github.com/fabianalexisinostroza/Antu-classic/blob/master/LICENSE.md for more details).
 
 ## Contact
 If you have any doubt, suggestion or want to contact me, use my email viniciusov@hotmail.com.
