@@ -1,12 +1,15 @@
 #!/bin/bash
 
+sleep 10s #wait for system initialization
+proc_num=$(ps -aux | grep -c 'plexmediaserver') #number of plex processes right after startup
+
 while : ; do
 	counter=0
-	while [ $(ps -aux | grep -c 'plexmediaserver') -le 6 ] ; do #if plex is not running
+	while [ $(ps -aux | grep -c 'plexmediaserver') -le $proc_num ] ; do #if plex is not running
 		sleep 1m
 		((counter++))
 		if [ $counter -lt 50 ] ; then
-			if [ $(ps -aux | grep -c 'plexmediaserver') -gt 6 ] ; then #if plex is running
+			if [ $(ps -aux | grep -c 'plexmediaserver') -gt $proc_num ] ; then #if plex is running
 				counter=0
 			fi
 		else
@@ -22,9 +25,9 @@ Type shutdown -c in a terminal to cancel."
 	
 	sudo /sbin/shutdown -h +10
 
-	while [ $(ps -aux | grep -c 'plexmediaserver') -le 6 ] ; do #if plex is not running
+	while [ $(ps -aux | grep -c 'plexmediaserver') -le $proc_num ] ; do #if plex is not running
 		sleep 1m
-		if [ $(ps -aux | grep -c 'plexmediaserver') -gt 6 ] || ! ps -C shutdown > /dev/null ; then #if plex is running or shutdown cancelled
+		if [ $(ps -aux | grep -c 'plexmediaserver') -gt $proc_num ] || ! ps -C shutdown > /dev/null ; then #if plex is running or shutdown cancelled
 			if ps -C shutdown > /dev/null ; then #if shutdown is still pending
   				sudo /sbin/shutdown -c
 			fi
