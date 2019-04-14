@@ -9,9 +9,9 @@ while : ; do
 			if [ $(ps -aux | grep -c 'plexmediaserver') -gt 6 ] ; then #if plex is running
 				counter=0
 			fi
-	    elif [ $counter -eq 50 ] ; then
-            shut_time=$(date --date='10 minutes' +"%T")
-            notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "WARNING:
+		elif [ $counter -eq 50 ] ; then
+			shut_time=$(date --date='10 minutes' +"%T")
+			notify-send -t 600000 -i "/usr/share/plex-shutdown/plex.svg" "WARNING:
 Plex is not transcoding.
 Shutting down in 10 minutes ($shut_time).
 Type shutdown -c in a terminal to cancel."
