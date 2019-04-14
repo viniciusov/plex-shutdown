@@ -15,7 +15,7 @@ while : ; do
 Plex is not transcoding.
 Shutting down in 10 minutes ($shut_time).
 Type shutdown -c in a terminal to cancel."
-             sudo /sbin/shutdown -h +10
+			sudo /sbin/shutdown -h +10
 		else
 			break
 		fi
