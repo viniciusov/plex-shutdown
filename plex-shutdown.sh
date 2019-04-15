@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 10s #wait for system initialization
+sleep 5s #wait for system initialization
 proc_num=$(ps -aux | grep -c 'plexmediaserver') #number of plex processes right after startup
 
 while : ; do
