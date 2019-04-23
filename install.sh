@@ -3,6 +3,7 @@
 echo 'Installing...'
 
 mkdir ~/.config/autostart
+mkdir ~/.config/plex-shutdown
 cp plex-shutdown.desktop ~/.config/autostart/
 
 user=$USER
