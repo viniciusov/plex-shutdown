@@ -1,23 +1,17 @@
 #!/bin/bash
 
 log_path=~/.config/plex-shutdown/log
+proc_num=$(($(ps -aux | grep -c 'plexmediaserver')+1))
+sleep 10s
 
 echo --------------------------------------- >> $log_path
 echo [$(date)] 'Started' >> $log_path
-sleep 5s #wait for system initialization
-proc_num=$(ps -aux | grep -c 'plexmediaserver') #number of plex processes right after startup
 echo [$(date)] 'Initial Plex Processes:' $proc_num >> $log_path
 
 while : ; do
 	counter=0
 	pending=false
 	while [ $(ps -aux | grep -c 'plexmediaserver') -le $proc_num ] ; do #if plex is not running
-		if [ $(ps -aux | grep -c 'plexmediaserver') -lt $proc_num ] ; then
-			proc_num=$(ps -aux | grep -c 'plexmediaserver')
-			echo [$(date)] 'Counter:' $counter >> $log_path
-			echo [$(date)] 'Plex Processes:' $(ps -aux | grep -c 'plexmediaserver') >> $log_path
-			echo [$(date)] 'Initial Plex Processes changed to' $proc_num >> $log_path
-		fi	
 		sleep 1m
 		((counter++))
 		if [ $counter -lt 50 ] && [ $(ps -aux | grep -c 'plexmediaserver') -gt $proc_num ] ; then #if plex start
