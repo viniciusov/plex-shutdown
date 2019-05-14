@@ -3,11 +3,11 @@ A simple script to automatically shutdown your PC if Plex is not transcoding wit
 
 ## How it works
 This script will monitor your computer processes to check if Plex is transcoding or not.  
-If Plex isn't transcoding within 50 minutes, it will send a pop-up notification to your main screen warning about a pending shutdown for the next 10 minutes.  
+If Plex isn't transcoding for a long time, it will send a pop-up notification to your main screen warning about a pending shutdown for the next 10 minutes.  
 
 ![Notification preview](https://raw.githubusercontent.com/viniciusov/plex-shutdown/master/sample_images/1.png)
 
-After the warning, if plex starts transcoding or if you cancel the shutdown by typing `shutdown -c` in a terminal, you will see a new pop-up about the cancelation (see https://github.com/viniciusov/plex-shutdown/tree/master/sample_images for more images).  
+After the warning, if plex starts transcoding or if you type `shutdown -c` in a terminal, the shutdown will be canceled.  
 
 ## Requirements
 - Linux OS
@@ -18,7 +18,17 @@ After the warning, if plex starts transcoding or if you cancel the shutdown by t
 - Clone this git repository: `git clone https://github.com/viniciusov/plex-shutdown` (or simply download as .ZIP file and extract it);
 - Go the plex-shutdown folder: `cd plex-shutdown`;
 - Type `./install.sh` to run the installer (you **must** run this as a non-root user, **without sudo**);
+- Insert your root password when prompted;
 - Reboot or LogOUT/LogIN to the main script starts running.
+
+## Uninstallation
+- Go to the plex-shutdown folder and run `./uninstall.sh`;
+- Insert your root password when prompted.
+
+## Timing issues
+This script works monitoring the active plex processes. However, it's very hard to predict wich plex process will be active and how long it will stay running (some of them may be related to updates or other tasks).   
+So, when you start your OS, there may be some of these active processes and they will stay active for an undefined period. The result is that the plex-shutdown can't schedule a shutdown after a very defined time (although it is set to schedule after 50 minutes of inactivity).  
+In my tests this inactivity time until it schedule a shutdown (for the next 10 minutes) was around 90 minutes, wich is pretty good but not always the same.
 
 ## License
 This project is under the GPLv3 License (see https://www.gnu.org/licenses/gpl-3.0.de.html for more details).  
