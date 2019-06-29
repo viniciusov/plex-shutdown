@@ -37,3 +37,7 @@ The Plex icon (used in the notification pop-ups) is from the Antü Classic, by F
 
 ## Contact
 If you have any doubt, suggestion or want to contact me, use my email viniciusov@hotmail.com.
+
+## To-do
+If your player is compatible with the media you are requesting, the Plex server will not transcode it. Instead, it will only "share" the media and this script won't recognize this activity, shutting down the server at the specified time.
+As an alternative, should be good to monitor the Upload speed to detect this activity and restart the script counter.
