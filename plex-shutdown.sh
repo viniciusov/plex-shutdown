@@ -7,10 +7,10 @@ log_path=~/.config/plex-shutdown/log
 up_trigger=1000 #bytes
 idle_time=50 #minutes
 warning_time=10 #minutes
-shutdown_time=$(($idle_time + $warning_time))
 
 ########################################
 
+shutdown_time=$(($idle_time + $warning_time))
 proc_num=$(($(ps -aux | grep -c 'plexmediaserver')+1))
 sleep 10s #for system initialization (and connect to the internet)
 interface=$(route | awk 'END {print $NF}')
