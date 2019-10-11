@@ -2,7 +2,7 @@
 A simple script to automatically shutdown your PC if your Plex Server isn't sharing any media within 1 hour.
 
 ## How it works
-This script will monitor your computer processes to check if your Plex Server is transcoding or not.  
+After you **log in**, this script will monitor your computer processes to check if your Plex Server is transcoding or not.  
 If it's not transcoding, it will also monitor the upload rates to check if the Plex Server is uploading any content (if you don't want to monitor your upload rates, check the branch [*transcoding-only*](https://github.com/viniciusov/plex-shutdown/tree/transcoding-only)).  
 If the Plex Server isn't active for a long time, it will send a pop-up notification to your main screen warning about a pending shutdown for the next 10 minutes.  
 
