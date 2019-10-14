@@ -12,11 +12,11 @@ If it's not transcoding, it will also monitor the upload rates to check if the P
 - Open a terminal;
 - Clone this git repository: `git clone https://github.com/viniciusov/plex-shutdown` (or simply download as .ZIP file and extract it);
 - Go the plex-shutdown folder: `cd plex-shutdown`;
-- Type `sudo install.sh` to run the installer;
+- Type `sudo ./install.sh` to run the installer;
 - Insert your root password when prompted;
 
 ## Uninstallation
-- Go to the plex-shutdown folder and run `sudo uninstall.sh`;
+- Go to the plex-shutdown folder and run `sudo ./uninstall.sh`;
 - Insert your root password when prompted.
 
 ## License
