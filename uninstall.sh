@@ -2,7 +2,9 @@
 
 echo 'Uninstalling...'
 
-rm  ~/.config/autostart/plex-shutdown.desktop
-sudo rm -r /usr/share/plex-shutdown
+sudo rm -r /etc/plex-shutdown
+sudo systemctl stop plex-shutdown.service
+sudo systemctl disable plex-shutdown.service
+sudo rm /etc/systemd/system/plex-shutdown.service
 
 echo 'Done!'

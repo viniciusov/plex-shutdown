@@ -3,7 +3,7 @@
 ########################################
 # Configuration:
 
-log_path=~/.config/plex-shutdown/log
+log_path=/etc/plex-shutdown/log
 up_trigger=1000 #bytes
 idle_time=50 #minutes
 warning_time=10 #minutes
@@ -51,10 +51,6 @@ while : ; do
 			break
 		elif [ $counter -eq $idle_time ] ; then #if not running until 'idle_time', give a warning
 			shut_time=$(date --date='10 minutes' +"%T")
-			notify-send -t $(($warning_time*60*1000)) -i "/usr/share/plex-shutdown/plex.svg" "WARNING:
-Plex is not running.
-Shutting down in $warning_time minutes ($shut_time).
-Type shutdown -c in a terminal to cancel."
 			sudo /sbin/shutdown -h +$warning_time
 			pending=true
 			echo [$(date)] 'Counter:' $counter >> $log_path
@@ -63,7 +59,6 @@ Type shutdown -c in a terminal to cancel."
 			sleep 10s #wait if system is shutting down
 			echo [$(date)] 'Counter:' $counter >> $log_path
 			echo [$(date)] 'Time Over. Restarting timer...' >> $log_path
-			notify-send -t $(($warning_time*60*1000)) -i "/usr/share/plex-shutdown/plex.svg" "Shutdown canceled by the system."
 			break #pending=false before while loop
 		fi
 	done
@@ -80,13 +75,11 @@ Type shutdown -c in a terminal to cancel."
 			echo [$(date)] 'Plex Processes:' $(ps -aux | grep -c 'plexmediaserver') >> $log_path
 			echo [$(date)] 'Shutdown canceled due Plex activity. Restarting timer...' >> $log_path
 			sudo /sbin/shutdown -c
-			notify-send -t $(($warning_time*60*1000)) -i "/usr/share/plex-shutdown/plex.svg" "Shutdown canceled."
 		elif [ $upload -gt $up_tigger ] ; then
 			echo [$(date)] 'Counter:' $counter >> $log_path
 			echo [$(date)] 'Current upload rate (bytes/s):' $upload >> $log_path
 			echo [$(date)] 'Shutdown canclede due upload. Restarting timer...' >> $log_path
 			sudo /sbin/shutdown -c
-			notify-send -t $(($warning_time*60*1000)) -i "/usr/share/plex-shutdown/plex.svg" "Shutdown canceled."
 		fi 
 	fi	
 	sleep 1m

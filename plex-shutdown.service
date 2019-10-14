@@ -1,0 +1,14 @@
+[Unit]
+Description=plex-shutdown
+After=network.target
+
+[Service]
+ExecStart=/bin/bash plex-shutdown.sh
+WorkingDirectory=/etc/plex-shutdown
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

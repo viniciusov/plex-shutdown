@@ -1,7 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Type=Application
-Exec=/usr/share/plex-shutdown/plex-shutdown.sh
-Hidden=false
-Name=plex-shutdown
-Comment=Shutdown if plex is not running.

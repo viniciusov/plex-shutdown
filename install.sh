@@ -2,15 +2,10 @@
 
 echo 'Installing...'
 
-mkdir ~/.config/autostart
-mkdir ~/.config/plex-shutdown
-cp plex-shutdown.desktop ~/.config/autostart/
-
-user=$USER
-sudo bash -c 'echo "'$user' ALL=(ALL) NOPASSWD: /sbin/shutdown" > /etc/sudoers.d/shutdown'
-
-sudo mkdir /usr/share/plex-shutdown
-sudo cp plex-shutdown.sh /usr/share/plex-shutdown/
-sudo cp plex.svg /usr/share/plex-shutdown/
+sudo mkdir /etc/plex-shutdown
+sudo cp plex-shutdown.sh /etc/plex-shutdown/
+sudo cp plex-shutdown.service /etc/systemd/system/
+sudo systemctl enable plex-shutdown.service
+sudo systemctl start plex-shutdown.service
 
 echo 'Done!'
