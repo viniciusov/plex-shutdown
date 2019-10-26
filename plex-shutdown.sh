@@ -1,8 +1,9 @@
 #!/bin/bash
 
 log_path=~/.config/plex-shutdown/log
-proc_num=$(($(ps -aux | grep -c 'plexmediaserver')+1))
+
 sleep 10s
+proc_num=$(($(ps -aux | grep -c 'plexmediaserver')+1))
 
 echo --------------------------------------- >> $log_path
 echo [$(date)] 'Started' >> $log_path
