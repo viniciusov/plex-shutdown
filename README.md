@@ -15,7 +15,8 @@ After the warning, if plex starts transcoding or if you type `shutdown -c` in a 
 
 ## Installation
 - Open a terminal;
-- Clone this git repository: `git clone https://github.com/viniciusov/plex-shutdown` (or simply download as .ZIP file and extract it);
+- Clone this git branch with:  
+`git clone --single-branch --branch transcoding-only https://github.com/viniciusov/plex-shutdown`;
 - Go the plex-shutdown folder: `cd plex-shutdown`;
 - Type `./install.sh` to run the installer (you **must** run this as a non-root user, **without sudo**);
 - Insert your root password when prompted;
