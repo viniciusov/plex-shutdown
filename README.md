@@ -10,7 +10,8 @@ If it's not transcoding, it will also monitor the upload rates to check if the P
 
 ## Installation
 - Open a terminal;
-- Clone this git repository: `git clone https://github.com/viniciusov/plex-shutdown` (or simply download as .ZIP file and extract it);
+- Clone this git branch with:  
+`git clone --single-branch --branch cli-only https://github.com/viniciusov/plex-shutdown`;
 - Go the plex-shutdown folder: `cd plex-shutdown`;
 - Type `sudo ./install.sh` to run the installer;
 - Insert your root password when prompted;
