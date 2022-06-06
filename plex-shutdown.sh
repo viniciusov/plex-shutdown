@@ -81,7 +81,7 @@ Type shutdown -c in a terminal to cancel."
 			echo [$(date)] 'Shutdown canceled due Plex activity. Restarting timer...' >> $log_path
 			sudo /sbin/shutdown -c
 			notify-send -t $(($warning_time*60*1000)) -i "/usr/share/plex-shutdown/plex.svg" "Shutdown canceled."
-		elif [ $upload -gt $up_tigger ] ; then
+		elif [ $upload -gt $up_trigger ] ; then
 			echo [$(date)] 'Counter:' $counter >> $log_path
 			echo [$(date)] 'Current upload rate (bytes/s):' $upload >> $log_path
 			echo [$(date)] 'Shutdown canclede due upload. Restarting timer...' >> $log_path
